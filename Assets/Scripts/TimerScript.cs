@@ -9,6 +9,7 @@ public class TimerScript : MonoBehaviour
     public Text text;
     public float timeLimmit = 30;
     float timer = 0;
+    public LoadScene loadScene;
 
     // Use this for initialization
     void Start()
@@ -24,8 +25,18 @@ public class TimerScript : MonoBehaviour
         text.text = "Time Left: " + (timeLimmit -(timer % 60)).ToString();
         if (timer >= timeLimmit)
         {
-            CommonAccessibles.CurrentGameState = CommonAccessibles.GameState.FIGHTMODE;
-            SceneManager.LoadScene("FightPhase", LoadSceneMode.Single);
+            if (CommonAccessibles.CurrentGameState == CommonAccessibles.GameState.BUILDMODE)
+            {
+                CommonAccessibles.CurrentGameState = CommonAccessibles.GameState.FIGHTMODE;
+                //SceneManager.LoadScene("FightPhase", LoadSceneMode.Single);
+                loadScene.LoadByName("FightPhase");
+            }
+            else
+            {
+                loadScene.LoadByName("WinScene");
+                //SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+            }
+
 
             //fightmode start(scene transition)
             //Enable character controller
