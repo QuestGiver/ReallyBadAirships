@@ -18,7 +18,7 @@ public class GridItem : MonoBehaviour
 
 
 
-    bool isPartOfShip;
+    public bool isPartOfShip;
     // Use this for initialization
     void Awake()
     {
@@ -39,7 +39,7 @@ public class GridItem : MonoBehaviour
         myMesh = gameObject.GetComponent<MeshRenderer>();
         //myMesh.enabled = false;
         myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, defaultOpacity);
-        isPartOfShip = false;
+        //isPartOfShip = false;
         hashCode = GetHashCode();
     }
 
@@ -51,44 +51,69 @@ public class GridItem : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (!isPartOfShip)
+        if (CommonAccessibles.CurrentGameState == CommonAccessibles.GameState.BUILDMODE)
         {
-            myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, 1f);
-            //myMesh.enabled = true;
+            if (!isPartOfShip)
+            {
+                myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, 1f);
+                //myMesh.enabled = true;
+            }
+
         }
+
 
     }
     private void OnMouseExit()
     {
-        if (isPartOfShip)
+        if (CommonAccessibles.CurrentGameState == CommonAccessibles.GameState.BUILDMODE)
         {
-            //myMesh.enabled = true;
-            myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, 1f);
+            if (isPartOfShip)
+            {
+                //myMesh.enabled = true;
+                myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, 1f);
+            }
+            else
+            {
+                myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, defaultOpacity);
+                //myMesh.enabled = false;
+            }
         }
-        else
-        {
-            myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, defaultOpacity);
-            //myMesh.enabled = false;
-        }
-
     }
     private void OnMouseDown()
     {
-        if (!isPartOfShip)
+        if (CommonAccessibles.CurrentGameState == CommonAccessibles.GameState.BUILDMODE)
         {
-            playerShip.listOfShipParts.Add(hashCode,gameObject);
-            gameObject.transform.parent = playerShip.transform;
-            isPartOfShip = true;
-            //myMesh.enabled = true;
-            myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, 1f);
+            if (!isPartOfShip)
+            {
+                playerShip.listOfShipParts.Add(hashCode, gameObject);
+                //gameObject.transform.parent = playerShip.transform;
+                isPartOfShip = true;
+                //transform.position += Vector3.up;
+                //myMesh.enabled = true;
+                myMesh.material.color = new Color(myMesh.material.color.r, myMesh.material.color.g, myMesh.material.color.b, 1f);
 
+            }
+            else
+            {
+                playerShip.listOfShipParts.Remove(hashCode);
+                gameObject.transform.parent = null;
+                isPartOfShip = false;
+            }
         }
-        else
+
+    }
+
+    public void OnBulletCollision()
+    {
+        if (CommonAccessibles.CurrentGameState == CommonAccessibles.GameState.FIGHTMODE)
         {
             playerShip.listOfShipParts.Remove(hashCode);
             gameObject.transform.parent = null;
             isPartOfShip = false;
         }
+
     }
+
+
 
 }

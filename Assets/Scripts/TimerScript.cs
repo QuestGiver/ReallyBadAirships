@@ -21,10 +21,12 @@ public class TimerScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        text.text = "Time Left: " + (30 -(timer % 60)).ToString();
+        text.text = "Time Left: " + (timeLimmit -(timer % 60)).ToString();
         if (timer >= timeLimmit)
         {
+            CommonAccessibles.CurrentGameState = CommonAccessibles.GameState.FIGHTMODE;
             SceneManager.LoadScene("FightPhase", LoadSceneMode.Single);
+
             //fightmode start(scene transition)
             //Enable character controller
             //disable build grid

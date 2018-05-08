@@ -108,3 +108,5 @@ MonoBehaviour:
   grid: {fileID: 0}
   playerShip: {fileID: 0}
   hashCode: 0
+  defaultOpacity: 0.25
+  isPartOfShip: 0
