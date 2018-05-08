@@ -62,7 +62,7 @@ public class GridItem : MonoBehaviour
     {
         if (!isPartOfShip)
         {
-            playerShip.listOfShipParts.Add(hashCode,this.gameObject);
+            playerShip.listOfShipParts.Add(hashCode,gameObject);
             gameObject.transform.parent = playerShip.transform;
             isPartOfShip = true;
             myMesh.enabled = true;
@@ -70,7 +70,7 @@ public class GridItem : MonoBehaviour
         else
         {
             playerShip.listOfShipParts.Remove(hashCode);
-            gameObject.transform.parent = playerShip.transform;
+            gameObject.transform.parent = null;
             isPartOfShip = false;
         }
     }

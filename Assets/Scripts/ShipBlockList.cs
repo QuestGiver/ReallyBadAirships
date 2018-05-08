@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ShipBlockList : MonoBehaviour
 {
-    public Dictionary<int,GameObject> listOfShipParts;
+    public Dictionary<int,GameObject> listOfShipParts = new Dictionary<int, GameObject>();
+
+
     // Use this for initialization
     void Start()
     {
