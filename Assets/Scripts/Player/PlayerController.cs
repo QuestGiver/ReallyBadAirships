@@ -33,8 +33,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            gun.par = this.transform;
-            gun.shoot();
+            if (CommonAccessibles.CurrentGameState == CommonAccessibles.GameState.FIGHTMODE)
+            {
+                gun.par = this.transform;
+                gun.shoot();
+            }
         }
 	}
 }
