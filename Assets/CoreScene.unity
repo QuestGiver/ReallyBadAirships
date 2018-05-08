@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 1804372243}
   - component: {fileID: 1804372242}
   - component: {fileID: 1804372244}
+  - component: {fileID: 1804372245}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -466,6 +467,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1804372242}
   timeLimmit: 5
+  loadScene: {fileID: 1804372245}
+--- !u!114 &1804372245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1804372240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b522cee2dd24241b840c938d13e08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2096203282
 GameObject:
   m_ObjectHideFlags: 0
