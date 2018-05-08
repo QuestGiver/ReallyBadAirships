@@ -110,7 +110,9 @@ public class GridItem : MonoBehaviour
             playerShip.listOfShipParts.Remove(hashCode);
             gameObject.transform.parent = null;
             isPartOfShip = false;
+            Destroy(gameObject);
         }
+
 
     }
 
