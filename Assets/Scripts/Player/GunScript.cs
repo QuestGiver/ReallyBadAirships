@@ -27,9 +27,7 @@ public class GunScript : MonoBehaviour
         if (timer < 0)
         {
             GameObject spawnedBullet = Instantiate(bullet,par.transform.position + new Vector3(1,0,0),gameObject.transform.rotation);
-            //spawnedBullet.transform.position = par.transform.position * 2;
-            //Vector3 shootDir = (par.transform.right);
-            spawnedBullet.GetComponent<Rigidbody>().velocity = new Vector3(speed * Time.deltaTime, 0, 0);//shootDir * speed * Time.deltaTime;
+            spawnedBullet.GetComponent<Rigidbody>().velocity = new Vector3(speed * Time.deltaTime, 0, 0);
             timer = fireRate;
             Destroy(spawnedBullet, 3);
         }
