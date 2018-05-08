@@ -10,7 +10,7 @@ public class ShipBlockList : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -18,4 +18,5 @@ public class ShipBlockList : MonoBehaviour
     {
 
     }
+
 }
