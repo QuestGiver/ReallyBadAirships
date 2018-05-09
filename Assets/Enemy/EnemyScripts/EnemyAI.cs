@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-
+        Shoot();
     }
 
     void Shoot()

@@ -33,11 +33,10 @@ public class TimerScript : MonoBehaviour
             }
             else
             {
+                CommonAccessibles.CurrentGameState = CommonAccessibles.GameState.BUILDMODE;
                 loadScene.LoadByName("WinScene");
                 //SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
             }
-
-
             //fightmode start(scene transition)
             //Enable character controller
             //disable build grid
