@@ -12,6 +12,8 @@ public class GunScript : MonoBehaviour
     public float speed;
     public bool player;
     public float horizontalSpawnOffset = 1f;
+    public float verticalSpawnOffset = 0f;
+    public float lifetime = 3;
 
     public void Start()
     {
@@ -32,16 +34,16 @@ public class GunScript : MonoBehaviour
     {
         if (timer < 0)
         {
-            GameObject spawnedBullet = Instantiate(bullet,par.transform.position + new Vector3(horizontalSpawnOffset,0,0),gameObject.transform.rotation);
+            GameObject spawnedBullet = Instantiate(bullet,par.transform.position + new Vector3(horizontalSpawnOffset,0,verticalSpawnOffset),gameObject.transform.rotation);
 
             spawnedBullet.GetComponent<Rigidbody>().velocity = new Vector3(speed * Time.deltaTime, 0, 0);
 
             if(player)
                 spawnedBullet.GetComponent<BulletScript>().target = "enemy";
             else
-                spawnedBullet.GetComponent<BulletScript>().target = "player";
+                spawnedBullet.GetComponent<BulletScript>().target = "Player";
             timer = fireRate;
-            Destroy(spawnedBullet, 3);
+            Destroy(spawnedBullet, lifetime);
         }
     }
 

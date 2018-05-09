@@ -11,6 +11,10 @@ public class EnemyAI : MonoBehaviour
     public float speed;
     public float horizontalSpawnOffset = -1f;
     // Use this for initialization
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,12 +33,7 @@ public class EnemyAI : MonoBehaviour
 
             timer = 0;
             Destroy(spawnedBullet, 5);
-
-
-            if (player)
-                spawnedBullet.GetComponent<BulletScript>().target = "enemy";
-            else
-                spawnedBullet.GetComponent<BulletScript>().target = "player";
+            spawnedBullet.GetComponent<BulletScript>().target = "Player";
             timer = fireRate;
             Destroy(spawnedBullet, 3);
         }

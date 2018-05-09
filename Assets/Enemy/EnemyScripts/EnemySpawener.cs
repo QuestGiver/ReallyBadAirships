@@ -8,6 +8,7 @@ public class EnemySpawener : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gunScript.verticalSpawnOffset = Random.Range(-6, 6);
         gunScript.shoot();
     }
 }

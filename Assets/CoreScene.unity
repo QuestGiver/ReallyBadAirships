@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1117632336}
   m_Layer: 0
   m_Name: CharacterController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,7 +286,11 @@ MonoBehaviour:
   bullet: {fileID: 1093036297258758, guid: 692a34dc9a37460449711d35a84c3a4d, type: 2}
   par: {fileID: 1117632334}
   fireRate: 0.5
-  speed: 1000
+  speed: 300
+  player: 0
+  horizontalSpawnOffset: 1
+  verticalSpawnOffset: 0
+  lifetime: 3
 --- !u!114 &1117632339
 MonoBehaviour:
   m_ObjectHideFlags: 0
