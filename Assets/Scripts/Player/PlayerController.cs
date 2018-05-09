@@ -24,8 +24,16 @@ public class PlayerController : MonoBehaviour
         float Xmove = Input.GetAxis("Horizontal");
         float Zmove = Input.GetAxis("Vertical");
 
-        Vector3 moveHorizontal = transform.right * Xmove;
-        Vector3 moveVertical = transform.forward * Zmove;
+        Vector3 moveHorizontal = Vector3.zero;
+        Vector3 moveVertical = Vector3.zero;
+
+        //if (transform.position.x < Mathf.Clamp(10, 20, 20))
+        //    moveHorizontal = transform.right * Xmove;
+        //if(transform.position.z < Mathf.Clamp(10, 20, 20))
+        //    moveVertical = transform.forward * Zmove;
+
+        moveHorizontal = transform.right * Xmove;
+        moveVertical = transform.forward * Zmove;
 
         Vector3 velocity = (moveHorizontal + moveVertical) * speed;
 
